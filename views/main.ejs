@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Home</title>
+    <link rel="stylesheet" href="/css/mainPageStyle.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script src="/js/mainPageHelper.js" defer></script>
+
+</head>
+<body>
+    <!-- Header with create blog and next blog buttons -->
+     <header class="blog-page-header">
+        <!-- Display user name -->
+         <div class="user-info">
+            <p>Welcome, </p>
+            <p><%= user.name %></p>
+         </div>
+
+        <!-- Home Page title -->
+        <h1 class="main-page-header">Home Page</h1>
+
+        <!-- Log out button -->
+        <div class="header-right">
+            <button onclick="window.location.href='/logout'" class="logout-btn"><i class="ri-logout-circle-r-line"></i></button>
+        </div>
+
+        <!-- Buttons for Create and Next Blog -->
+        <div class="header-buttons">
+            <button onclick="window.location.href='/create-blog'">Create New Blog</button>
+            <% if (blogId) { %>
+                <button onclick="window.location.href='/main/next/<%= blogId %>'">Next Blog</button>
+            <% } %> 
+        </div>
+        
+     </header>
+
+
+    <!-- Container for displaying the blog post -->
+    <div class="blog-post">
+        <% if (blog) { %> <!-- Check if the blog object exists-->
+            <h4>By: <%=blog.posterName %></h4>
+            <h5 id="createdOn" data-timestamp='<%= JSON.stringify(blog.createdAt) %>'></h5>
+            <h2><%= blog.title %></h2> <!-- Blog title -->
+            <p><%= blog.content %></p> <!-- Blog content -->
+
+            <!-- Display media if available -->
+            <% if (blog.mediaUrl) { %>
+                <img src="<%= blog.mediaUrl %>" alt="Blog Media" width="500"> <!-- Media file (img or vid) -->
+            <% } %>
+
+            <!-- Like button with like count -->
+            <div class="blog-action">
+                <button class="like-btn" data-liked="<%= blog.likes.includes(user.uid) %>" data-blog-id="<%= blogId %>">
+                    <i class="<%= blog.likes.includes(user.uid) ? 'ri-heart-fill' : 'ri-heart-line' %>"></i> <!-- Heart icon -->
+                    (<span class="like-count"><%= blog.likes.length %></span>)
+                </button>
+            </div>
+
+            <!-- Display comment -->
+            <div class="comments-section">
+                <h4>Comments</h4>
+                <ul id="comment-list">
+                    <% blog.comments.forEach(function(comment) { %>
+                        <li><strong><%= comment.userName %>:</strong> <span class="comments-line"><%= comment.comment %></span></li> <!--Display each comment -->
+                    <% }) %>
+                </ul>
+
+                <!-- Form to add a comment -->
+                <form data-blog-id="<%= blogId %>">
+                    <textarea name="comment" required placeholder="Add your comment here"></textarea>
+                    <button type="submit">Comment</button>
+                </form>
+            </div>
+        <% } else { %>
+            <!-- Display this message if no blog post is available -->
+            <p>No blog post is available at the moment.</p>
+        <% } %>
+    </div>
+
+    <!-- Footer section -->
+    <footer>
+        <p>My Blogging Platform &copy; 2024</p>
+    </footer>
+</body>
+</html>

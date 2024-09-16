@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a Blog</title>
+    <link rel="stylesheet" href="/css/createPageStyle.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Heade section -->
+    <header class="create-blog-header">
+        <h1>Create New Blog Post</h1>
+        <button onclick="window.location.href='/main'" class="back-btn"><i class="ri-arrow-go-back-fill"></i></button>
+    </header>
+
+    <!-- Blog creation form -->
+    <div class="blog-form-container">
+        <form action="/create-blog" method="POST" enctype="multipart/form-data">
+            <!-- Blog title input -->
+            <div class="form-group title">
+                <label for="title">Blog Title</label> <!-- Label for the title input-->
+                <input type="text" id="title" name="title" placeholder="Blog title" required>
+            </div>
+
+            <!-- Blog content textarea -->
+            <div class="form-group content">
+                <label for="content">Content</label>
+                <textarea id="content" name="content" rows="8" placeholder="Blog content" required></textarea>
+            </div>
+
+            <!-- Media upload input -->
+            <div class="form-group media">
+                <label for="media">Upload Media (optional)</label>
+                <input type="file" id="media" name="media">
+            </div>
+
+            <!-- Submit button -->
+            <div class="form-group submit-btn">
+                <button type="submit" class="submit-btn">Submit Blog</button>
+            </div>
+        </form>
+    </div>
+    
+    <!-- Footer section -->
+    <footer>
+        <p>My Blogging Platform &copy; 2024</p>
+    </footer>
+</body>
+</html>

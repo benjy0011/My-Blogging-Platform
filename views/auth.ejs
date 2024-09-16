@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication</title>
+    <link rel="stylesheet" href="/css/authPageStyle.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+    <!-- link to JS, add in later -->
+    <script src="/js/authPageHelper.js" defer></script>
+</head>
+<header class="login-page-header">
+    <h1>My Blogging <u>Platform</u></h1>
+</header>
+<body>
+    <div id="auth-container">
+        <div id="form-slider" class="slider slide-left"> <!-- Set initial class to 
+            slide-left -->
+            <!-- log in form -->
+            <div id="login-form" class="form">
+                <h2>Login</h2>
+                <form action="/login" method="POST">  <!-- POST req.body{ all the "name": "value"}-->
+                    <!-- email -->
+                    <div class="input-container">
+                        <i class="ri-mail-line"></i>
+                        <input type="email" name="email" placeholder="Enter your email" required>
+                    </div>
+                    <!-- password -->
+                    <div class="input-container">
+                        <i class="ri-lock-password-line"></i>
+                        <input type="password" name="password" id="login-password" placeholder="Enter your password" required>
+                        <i class="ri-eye-off-line" onclick="togglePassword('login-password', this)"></i>
+                    </div>
+                    <!-- Remember me -->
+                    <div class="input-container">
+                        <input type="checkbox" name="remember" id="remember-me">
+                        <label for="remember-me">Remember me</label>
+                    </div>
+                    <button type="submit" class="login-page-button">Login</button>
+                </form>
+                <p>Don't have an account? <a href="javascript:void(0);" onclick="toggleForms()">Sign Up</a></p>
+            </div>
+
+            <!-- sign up form -->
+             <div id="signup-form" class="form">
+                <h2>Sign Up</h2>
+                <form action="/signup" method="POST" onsubmit="return validateSignUpForm()">
+                    <!-- name -->
+                    <div class="input-container"> 
+                        <i class="ri-user-3-line"></i>
+                        <input type="text" name="name" placeholder="Enter your name" required>
+                    </div>
+                    <!-- email -->
+                    <div class="input-container">
+                        <i class="ri-mail-line"></i>
+                        <input type="email" name="email" placeholder="Enter your email" required>
+                    </div>                    
+                    <!-- password -->
+                    <div class="input-container">
+                        <i class="ri-lock-password-line"></i>
+                        <input type="password" name="password" id="signup-password" placeholder="Enter your password" required minlength="6">
+                        <i class="ri-eye-off-line" onclick="togglePassword('signup-password', this)"></i>
+                    </div>
+                    <!-- confirm password -->
+                    <div class="input-container">
+                        <i class="ri-lock-password-fill"></i>
+                        <input type="password" name="password" id="signup-confirm-password" placeholder="Enter your password" required>
+                        <i class="ri-eye-off-line" onclick="togglePassword('signup-confirm-password', this)"></i>
+                    </div>
+                    <!-- T and C -->
+                     <div class="input-container">
+                        <input type="checkbox" name="terms" id="terms">
+                        <label for="terms">I accepted all <a href="/terms" target="_blank">terms and conditions</a></label>
+                     </div>
+                    <button type="submit" class="login-page-button">Sign Up</button>
+                </form>
+                <p>Already have an account? <a href="javascript:void(0);" onclick="toggleForms()">Login</a></p>
+             </div>
+        </div>
+    </div>
+
+    <!-- Error message display during log in -->
+    <% if (typeof errorMessage !== 'undefined') { %>
+        <div class="login-error-message" id='login-error-message' style="color: red;">
+            <p><%= errorMessage %></p>
+        </div>
+    <% } %>
+    
+</body>
+</html>
