@@ -37,7 +37,8 @@ Ensure that you have the following installed on your machine:
 ![image](https://github.com/user-attachments/assets/3ca3cd04-6f21-484f-8003-98fbc490c610)
 
 - Creating New Blog Post (title, content and media <5mb to save the storage of my free firebase >.<)
-![image](https://github.com/user-attachments/assets/129f1110-b48d-4578-adcb-cce26617247e)
+![image](https://github.com/user-attachments/assets/42808e02-eac8-4675-8f11-b8f4f06fce78)
+
 
 
 
