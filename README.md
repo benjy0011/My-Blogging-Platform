@@ -1,6 +1,6 @@
 # Blogging Platform
 
-A simple blogging platform (backend focused) built using **Node.js**, **Express**, and **Firebase**. This platform allows users to register, log in, create blog posts, like/unlike posts, and add comments to blog posts. This project is developed as part of TalentLabs' Certified Associate in Backend Development certification. Ready for deployment.
+A blogging platform (backend focused) built using **Node.js**, **Express**, and **Firebase**. This platform allows users to register, log in, create blog posts, like/unlike posts, and add comments to blog posts. This project is developed as part of TalentLabs' Certified Associate in Backend Development certification. Ready for deployment.
 
 ## Features
 
